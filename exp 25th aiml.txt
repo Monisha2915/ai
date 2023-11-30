@@ -1,0 +1,26 @@
+% Facts about students, teachers, subjects, and codes
+student(john, maths, 'MATH101').
+student(sarah, physics, 'PHY102').
+student(mike, chemistry, 'CHEM103').
+
+teacher(prof_smith, maths, 'MATH101').
+teacher(prof_jones, physics, 'PHY102').
+teacher(prof_brown, chemistry, 'CHEM103').
+
+% Rules to generate questions
+question(X) :- student(_, X, _).
+question(X) :- teacher(_, X, _).
+question(X) :- student(_, _, X).
+question(X) :- teacher(_, _, X).
+
+% Query to generate questions
+generate_question :- question(X), format('Fill in the blank. Code: ~w', [X]), nl, fail.
+
+
+
+
+input:
+1)
+generate_question.
+2)
+student(john,maths,X).
